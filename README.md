@@ -111,17 +111,36 @@ To get response status:
 
 ## Example
 
-    require 'paypal-sdk-permissions'
-    @api = PayPal::SDK::Permissions::API.new
+```ruby
+require 'paypal-sdk-permissions'
+@api = PayPal::SDK::Permissions::API.new
 
-    # Build request object
-    @request_permissions_request = @api.build_request_permissions()
-    @request_permissions_request.scope    = ["EXPRESS_CHECKOUT"]
-    @request_permissions_request.callback = "http://localhost:3000/permissions/get_access_token"
+# Build request object
+@request_permissions_request = @api.build_request_permissions()
+@request_permissions_request.scope    = ["EXPRESS_CHECKOUT"]
+@request_permissions_request.callback = "http://localhost:3000/permissions/get_access_token"
 
-    # Make API call & get response
-    @request_permissions_response = @api.request_permissions(@request_permissions_request)
+# Make API call & get response
+@request_permissions_response = @api.request_permissions(@request_permissions_request)
 
-    # Access Response
-    @request_permissions_response.responseEnvelope
-    @request_permissions_response.token
+# Access Response
+@request_permissions_response.responseEnvelope
+@request_permissions_response.token
+```
+
+## Samples
+
+Add following line in rails `Gemfile`:
+
+    gem 'paypal-sdk-permissions'
+    gem 'permissions_samples', :git => "https://github.com/paypal/permissions-ruby.git", :group => :development
+
+Configure routes(`config/routes.rb`):
+
+    mount PermissionsSamples::Engine => "/samples" if Rails.env.development?
+
+To get default paypal configuration execute:
+
+    rails g paypal:sdk:install
+
+Run `rails server` and check the samples.
