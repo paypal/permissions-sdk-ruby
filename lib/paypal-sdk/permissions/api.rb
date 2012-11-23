@@ -10,7 +10,7 @@ module PayPal
           super(SERVICE_NAME, environment, options)
         end
 
-        PERMISSIONS_HTTP_HEADER = { "X-PAYPAL-REQUEST-SOURCE" => "permissions-ruby-#{VERSION}" }
+        PERMISSIONS_HTTP_HEADER = { "X-PAYPAL-REQUEST-SOURCE" => "permissions-ruby-sdk-#{VERSION}" }
         def default_http_header
           super.merge(PERMISSIONS_HTTP_HEADER)
         end
