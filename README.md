@@ -135,7 +135,7 @@ require 'paypal-sdk-permissions'
 Add following line in rails `Gemfile`:
 
     gem 'paypal-sdk-permissions'
-    gem 'permissions_samples', :git => "https://github.com/paypal/permissions-ruby.git", :group => :development
+    gem 'permissions_samples', :git => "https://github.com/paypal/permissions-sdk-ruby.git", :group => :development
 
 Configure routes(`config/routes.rb`):
 
