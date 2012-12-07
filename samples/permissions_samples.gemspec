@@ -7,8 +7,8 @@ require "permissions_samples/version"
 Gem::Specification.new do |s|
   s.name        = "permissions_samples"
   s.version     = PermissionsSamples::VERSION
-  s.authors     = ["siddick"]
-  s.email       = ["mebramsha@paypal.com"]
+  s.authors     = ["PayPal"]
+  s.email       = ["DL-PP-Platform-Ruby-SDK@paypal.com"]
   s.homepage    = "https://www.x.com/"
   s.summary     = "Samples for Permissions."
   s.description = "Samples for Permissions."
