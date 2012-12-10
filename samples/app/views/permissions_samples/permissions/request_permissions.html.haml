@@ -18,5 +18,5 @@
   = render 'api_response', :request => @request_permissions, :response => @request_permissions_response
 
   %p
-    %b Grand Permission
+    %b Grant Permission
     = link_to "Follow the link to generate token",  "https://www.sandbox.paypal.com/webscr&cmd=_grant-permission&request_token=#{@request_permissions_response.token}"
