@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.name          = "paypal-sdk-permissions"
   gem.version       = PayPal::SDK::Permissions::VERSION
   gem.authors       = ["PayPal"]
-  gem.email         = ["DL-PP-Platform-Ruby-SDK@paypal.com"]
+  gem.email         = ["DL-PP-Platform-Ruby-SDK@ebay.com"]
   gem.description   = %q{Permissions SDK}
   gem.summary       = %q{Permissions SDK}
   gem.homepage      = "https://www.x.com/"
