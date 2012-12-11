@@ -1,4 +1,4 @@
-# Permissions[ Work in progress !! ]
+# Permissions
 
 SDK for Permissions.
 
