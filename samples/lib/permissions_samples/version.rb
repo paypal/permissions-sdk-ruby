@@ -1,3 +1,3 @@
 module PermissionsSamples
-  VERSION = "0.95.0"
+  VERSION = "1.96.1"
 end

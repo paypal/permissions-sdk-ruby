@@ -1,5 +1,4 @@
 require 'paypal-sdk-core'
-require 'paypal-sdk/permissions/data_types'
 
 # AUTO GENERATED code for Permissions
 module PayPal::SDK
