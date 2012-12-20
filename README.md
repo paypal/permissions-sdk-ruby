@@ -1,6 +1,6 @@
-# Permissions
+# Permissions SDK
 
-SDK for Permissions.
+The PayPal Permission SDK provides Ruby APIs for developers to request and obtain permissions from merchants and consumers, to execute APIs on behalf of them. The permissions include variety of operations from processing payments to accessing account transaction history.
 
 ## Installation
 

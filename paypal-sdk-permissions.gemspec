@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = PayPal::SDK::Permissions::VERSION
   gem.authors       = ["PayPal"]
   gem.email         = ["DL-PP-Platform-Ruby-SDK@ebay.com"]
-  gem.description   = %q{Permissions SDK}
-  gem.summary       = %q{Permissions SDK}
+  gem.summary       = %q{PayPal Permissions SDK}
+  gem.description   = %q{The PayPal Permission SDK provides Ruby APIs for developers to request and obtain permissions from merchants and consumers, to execute APIs on behalf of them. The permissions include variety of operations from processing payments to accessing account transaction history}
   gem.homepage      = "https://www.x.com/"
 
   gem.files         = Dir["{bin,spec,lib}/**/*"] + ["Rakefile", "README.md", "Gemfile"]
@@ -17,5 +17,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency('paypal-sdk-core', '~> 0.1.0')
+  gem.add_dependency('paypal-sdk-core', '~> 0.1.2')
 end
