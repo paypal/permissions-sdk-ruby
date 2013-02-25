@@ -115,15 +115,20 @@ To get response status:
 
 ```ruby
 require 'paypal-sdk-permissions'
-@api = PayPal::SDK::Permissions::API.new
+@api = PayPal::SDK::Permissions::API.new(
+  :mode      => "sandbox",  # Set "live" for production
+  :app_id    => "APP-80W284485P519543T",
+  :username  => "jb-us-seller_api1.paypal.com",
+  :password  => "WX4WTU3S8MY44S7F",
+  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy" )
 
 # Build request object
-@request_permissions_request = @api.build_request_permissions()
-@request_permissions_request.scope    = ["EXPRESS_CHECKOUT"]
-@request_permissions_request.callback = "http://localhost:3000/permissions/get_access_token"
+@request_permissions = @api.build_request_permissions({
+  :scope => ["EXPRESS_CHECKOUT","INVOICING"],
+  :callback => "http://localhost:3000/samples/permissions/get_access_token" })
 
 # Make API call & get response
-@request_permissions_response = @api.request_permissions(@request_permissions_request)
+@request_permissions_response = @api.request_permissions(@request_permissions)
 
 # Access Response
 @request_permissions_response.responseEnvelope
