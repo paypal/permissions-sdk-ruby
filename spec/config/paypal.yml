@@ -5,8 +5,7 @@ test: &default
   app_id: APP-80W284485P519543T
   http_timeout: 30
   mode: sandbox
-  redirect_url: "https://www.sandbox.paypal.com/webscr&cmd="
-  dev_central_url: "https://developer.paypal.com"
+
 development:
   <<: *default
 
