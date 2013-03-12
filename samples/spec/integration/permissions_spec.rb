@@ -27,4 +27,4 @@ describe "PermissionsSample", :js => true do
     page.should have_content("ack: Success")
   end
 
-end
+end if ENV["SELENIUM"]
