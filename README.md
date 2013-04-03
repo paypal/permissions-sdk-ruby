@@ -86,7 +86,7 @@ require 'paypal-sdk-permissions'
 @request_permissions_response.token
 ```
 
-For more samples [https://paypal-sdk-samples.herokuapp.com/permissions/request_permissions](https://paypal-sdk-samples.herokuapp.com/permissions/request_permissions)
+For more samples [https://paypal-sdk-samples.herokuapp.com/permissions/](https://paypal-sdk-samples.herokuapp.com/permissions/)
 
 ## Samples App
 
