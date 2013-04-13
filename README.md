@@ -82,8 +82,11 @@ require 'paypal-sdk-permissions'
 @request_permissions_response = @api.request_permissions(@request_permissions)
 
 # Access Response
-@request_permissions_response.responseEnvelope
-@request_permissions_response.token
+if @request_permissions_response.success?
+  print @request_permissions_response.token
+else
+  print @request_permissions_response.error[0].message
+end
 ```
 
 For more samples [https://paypal-sdk-samples.herokuapp.com/permissions/](https://paypal-sdk-samples.herokuapp.com/permissions/)
