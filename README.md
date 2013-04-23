@@ -83,9 +83,10 @@ require 'paypal-sdk-permissions'
 
 # Access Response
 if @request_permissions_response.success?
-  print @request_permissions_response.token
+  @request_permissions_response.token
+  @api.grant_permission_url(@request_permissions_response) # Redirect url to grant permissions
 else
-  print @request_permissions_response.error[0].message
+  @request_permissions_response.error
 end
 ```
 
