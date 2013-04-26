@@ -14,6 +14,22 @@ module PayPal::SDK
         end
       end
 
+      module ResponseStatus
+        Status = { :success => ["Success", "SuccessWithWarning"],
+                   :warning => ["Warning", "SuccessWithWarning", "FailureWithWarning"],
+                   :failure => ["Failure", "FailureWithWarning"] }
+
+        def response_status
+          self.responseEnvelope && self.responseEnvelope.ack
+        end
+
+        Status.keys.each do |status|
+          define_method("#{status}?") do
+            Status[status].include?(self.response_status)
+          end
+        end
+      end
+
       class EnumType < Core::API::DataTypes::Enum
       end
 
@@ -66,6 +82,7 @@ module PayPal::SDK
 
       class FaultMessage < DataType
         def self.load_members
+          include ResponseStatus
           object_of :responseEnvelope, ResponseEnvelope, :required => true
           array_of :error, ErrorData
         end
@@ -115,6 +132,7 @@ module PayPal::SDK
       # Returns the temporary request token 
       class RequestPermissionsResponse < DataType
         def self.load_members
+          include ResponseStatus
           object_of :responseEnvelope, ResponseEnvelope, :required => true
           # Temporary token that identifies the request for permissions. This token cannot be used to access resources on the account. It can only be used to instruct the user to authorize the permissions. 
           object_of :token, String
@@ -142,6 +160,7 @@ module PayPal::SDK
       # Permanent access token and token secret that can be used to make requests for protected resources owned by another account. 
       class GetAccessTokenResponse < DataType
         def self.load_members
+          include ResponseStatus
           object_of :responseEnvelope, ResponseEnvelope, :required => true
           # Identifier for the permissions approved for this relationship. 
           array_of :scope, String
@@ -169,6 +188,7 @@ module PayPal::SDK
       # The list of permissions associated with the token. 
       class GetPermissionsResponse < DataType
         def self.load_members
+          include ResponseStatus
           object_of :responseEnvelope, ResponseEnvelope, :required => true
           # Identifier for the permissions approved for this relationship. 
           array_of :scope, String
@@ -190,6 +210,7 @@ module PayPal::SDK
 
       class CancelPermissionsResponse < DataType
         def self.load_members
+          include ResponseStatus
           object_of :responseEnvelope, ResponseEnvelope, :required => true
           array_of :error, ErrorData
         end
@@ -247,6 +268,7 @@ module PayPal::SDK
 
       class GetBasicPersonalDataResponse < DataType
         def self.load_members
+          include ResponseStatus
           object_of :responseEnvelope, ResponseEnvelope, :required => true
           object_of :response, PersonalDataList
           array_of :error, ErrorData
@@ -257,6 +279,7 @@ module PayPal::SDK
 
       class GetAdvancedPersonalDataResponse < DataType
         def self.load_members
+          include ResponseStatus
           object_of :responseEnvelope, ResponseEnvelope, :required => true
           object_of :response, PersonalDataList
           array_of :error, ErrorData

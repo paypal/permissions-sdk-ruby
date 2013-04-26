@@ -19,4 +19,4 @@
 
   %p
     %b Grant Permission
-    = link_to "Follow the link to generate token",  "https://www.sandbox.paypal.com/webscr&cmd=_grant-permission&request_token=#{@request_permissions_response.token}"
+    = link_to "Follow the link to generate token", @api.grant_permission_url(@request_permissions_response)

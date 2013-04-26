@@ -8,7 +8,7 @@ if File.exist? File.expand_path('../samples/permissions_samples.gemspec', __FILE
   gem 'permissions_samples', :path => 'samples', :require => false
   group :test do
     gem 'rspec-rails', :require => false
-    gem 'capybara', :require => false
+    gem 'capybara', '~> 2.0.3', :require => false
   end
 end
 

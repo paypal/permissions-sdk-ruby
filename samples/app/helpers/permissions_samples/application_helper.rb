@@ -22,7 +22,8 @@ module PermissionsSamples
       request_hash.delete(:Version)
       # request_hash  = get_dotted_hash(request_hash)
       response_hash = api_response.to_hash(:namespace => false, :attribute => false)
-      ruby_code   = render("ruby_code.rb", :request_hash => request_hash, :response_hash => response_hash)
+      ruby_code   = render("ruby_code.rb", :api_request => api_request, :api_response => api_response,
+                           :request_hash => request_hash, :response_hash => response_hash)
       ruby_code.html_safe
     end
 
