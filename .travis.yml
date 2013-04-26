@@ -1,9 +1,7 @@
 rvm:
+  - "2.0.0"
   - "1.9.3"
   - "1.8.7"
 notifications:
   recipients:
     - DL-PP-Platform-Ruby-SDK@ebay.com
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
