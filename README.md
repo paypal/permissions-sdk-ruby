@@ -64,31 +64,49 @@ PayPal::SDK::Core::Config.load('config/paypal.yml',  ENV['RACK_ENV'] || 'develop
 
 ## Example
 
+Request permission:
+
 ```ruby
 require 'paypal-sdk-permissions'
-@api = PayPal::SDK::Permissions::API.new(
+
+PayPal::SDK.configure({
   :mode      => "sandbox",  # Set "live" for production
   :app_id    => "APP-80W284485P519543T",
   :username  => "jb-us-seller_api1.paypal.com",
   :password  => "WX4WTU3S8MY44S7F",
-  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy" )
+  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy" })
+
+@api = PayPal::SDK::Permissions::API.new
 
 # Build request object
 @request_permissions = @api.build_request_permissions({
-  :scope => ["EXPRESS_CHECKOUT","INVOICING"],
+  :scope => ["ACCESS_BASIC_PERSONAL_DATA","ACCESS_ADVANCED_PERSONAL_DATA"],
   :callback => "http://localhost:3000/samples/permissions/get_access_token" })
 
 # Make API call & get response
-@request_permissions_response = @api.request_permissions(@request_permissions)
+@response = @api.request_permissions(@request_permissions)
 
 # Access Response
-if @request_permissions_response.success?
-  @request_permissions_response.token
-  @api.grant_permission_url(@request_permissions_response) # Redirect url to grant permissions
+if @response.success?
+  @response.token
+  @api.grant_permission_url(@response) # Redirect url to grant permissions
 else
-  @request_permissions_response.error
+  @response.error
 end
 ```
+
+Make API call with `token` and `token_secret`:
+
+```ruby
+@api = PayPal::SDK::Permissions::API.new({
+   :token => "3rMSi3kCmK1Q3.BKxkH29I53R0TRLrSuCO..l8AMOAFM6cQhPTTrfQ",
+   :token_secret => "RuE1j8RNRlSuL5T-PSSpVWLvOlI" })
+
+@response = @api.get_basic_personal_data({
+  :attributeList => {
+    :attribute => [ "http://axschema.org/namePerson/first" ] } })
+```
+
 
 For more samples [https://paypal-sdk-samples.herokuapp.com/permissions/](https://paypal-sdk-samples.herokuapp.com/permissions/)
 
