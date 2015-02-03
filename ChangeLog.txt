@@ -1,3 +1,7 @@
+Version 1.96.4 - February 3, 2015
+
+  - Bumped up core version
+
 Version 1.96.3 - April 26, 2013
 
   - Updated core version to 0.2.3
