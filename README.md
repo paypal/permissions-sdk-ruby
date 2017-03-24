@@ -107,9 +107,6 @@ Make API call with `token` and `token_secret`:
     :attribute => [ "http://axschema.org/namePerson/first" ] } })
 ```
 
-
-For more samples [https://paypal-sdk-samples.herokuapp.com/permissions/](https://paypal-sdk-samples.herokuapp.com/permissions/)
-
 ## Samples App
 
 Add following line in rails `Gemfile`:
