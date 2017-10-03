@@ -89,10 +89,43 @@ PayPal::SDK.configure({
 # Access Response
 if @response.success?
   @response.token
-  @api.grant_permission_url(@response) # Redirect url to grant permissions
+  # Redirect url to grant permissions
+  redirect_to @api.grant_permission_url(@response)
+  # When the user then logs into PayPal and grants the requested permissions, the user will get redirected to the callback url defined when building the permissions-request.
 else
   @response.error
 end
+
+# In the controller handling the callback:
+# http://localhost:3000/samples/permissions/get_access_token
+
+class PermissionsController < ApplicationController
+  include PayPal::SDK::Permissions
+
+  def get_access_token
+    api = PayPal::SDK::Permissions::API.new
+
+    # Build request to exchange tokens
+    request_access_token = api.build_get_access_token(
+      :token    => params['request_token'],
+      :verifier => params['verification_code']
+    )
+
+    # Make API call & get response
+    access_token_response = api.get_access_token(request_access_token)
+
+    # Access Token Response
+    if access_token_response.success?
+      token        = access_token_response.token
+      token_secret = access_token_response.token_secret
+      # Now you have a token and token_secret you can use to make requests.
+    else
+      @error = access_token_response.error
+      # Handle the error here
+    end
+  end
+end
+
 ```
 
 Make API call with `token` and `token_secret`:
