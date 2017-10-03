@@ -107,6 +107,7 @@ class PermissionsController < ApplicationController
 
     # Build request to exchange tokens
     request_access_token = api.build_get_access_token(
+      # As an additional security measure, you should verify that the below "params['request_token']" is the same token as the "@response.token" above for the current user. For instance, you could store the "@response.token" in the user's session before the redirect and verify in this method.
       :token    => params['request_token'],
       :verifier => params['verification_code']
     )
