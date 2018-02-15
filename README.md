@@ -143,26 +143,3 @@ Make API call with `token` and `token_secret`:
   :attributeList => {
     :attribute => [ "http://axschema.org/namePerson/first" ] } })
 ```
-
-## Samples App
-
-Add following line in rails `Gemfile`:
-
-```ruby
-gem 'paypal-sdk-permissions'
-gem 'permissions_samples', :git => "https://github.com/paypal/permissions-sdk-ruby.git", :group => :development
-```
-
-Configure routes(`config/routes.rb`):
-
-```ruby
-mount PermissionsSamples::Engine => "/samples" if Rails.env.development?
-```
-
-To get default paypal configuration execute:
-
-```sh
-rails g paypal:sdk:install
-```
-
-Run `rails server` and check the samples.
